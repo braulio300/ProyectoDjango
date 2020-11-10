@@ -1,18 +1,11 @@
 {% extends 'core/base2.html' %}
-
-
 {% block title %}
     {{ 'Registro de Usuarios' }}
 {% endblock %}
-
-
 {% block title2 %}
     {{ 'Registro de Usuarios' }}
 {% endblock %}
-
-
 {% block content %}
-
     <form action="{% url 'registro' %}" method="post">
         {% csrf_token %}
 
@@ -52,7 +45,7 @@
                 Opciones
             </div>
             <div class="col-12 col-sm-3">
-                <input type="submit" name="btnAceptar" class="btnAceptar btn-primary">
+                <input type="submit" name="btnAceptar" class="btn btn-primary">
             </div>
         </div>
 

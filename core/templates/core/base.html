@@ -42,19 +42,6 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact'%}">Contacto</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
-            </li>
-
-                 <!--Form con el verificador de ingreso de usuario-->
-              <form class="form-inline my-2 my-lg-0">
-{% if user.is_authenticated %}
-                    <li class="nav-item nav-link">User: {{ user.get_username }}</li>
-                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
-{% else %}
-                    <li class="nav-item"><a href="{% url 'login' %}?next={{request.path}}" class="nav-link">Login</a></li>
-{% endif %}
-				</form>
           </ul>
         </div>
       </div>
@@ -76,6 +63,22 @@
         </div>
       </div>
     </header>
+
+    <!--Form con el verificador de ingreso de usuario-->
+				<form class="form-inline my-2 my-lg-0">
+
+					<ul class="navbar-nav"><!-- Links -->
+  	{% if user.is_authenticated %}
+						<li class="nav-item nav-link">User: {{ user.get_username }}</li>
+						<li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+	{% else %}
+						<li class="nav-item"><a href="{% url 'login' %}?next={{request.path}}" class="nav-link">Login</a></li>
+	{% endif %}
+					</ul>
+
+				</form>
+
+
 
     <!--Contenido-->
     {% block content%}{% endblock%}

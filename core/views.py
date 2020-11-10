@@ -10,9 +10,6 @@ def registro(request):
         nombre = request.POST["txtNombre"]
         correo = request.POST["txtCorreo"]
         clave = request.POST["txtClave"]
-        #if nombre == '' or correo == '' or clave == '':
-            #return redirect(request, '/core/registro.html')     Cuando no escriben nada, despues de la alerta se cae y si le pongo
-        #else:                                                   esto, me tira otro error 'NoReverseMatch at /registro'
         User.objects.create(username=nombre, email=correo, password=make_password(clave))
 
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
