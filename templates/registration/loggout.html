@@ -1,0 +1,15 @@
+{% extends 'core/base2.html' %}
+{% block title %}
+    {{'Login'}}
+{% endblock %}
+{% block title2 %}
+    {{ 'Autenticado de usuarios' }}
+{% endblock %}
+{% block content %}
+    <div class="row justify-content-center">
+        <p>Sesión Cerrada Satisfactoriamente! :D</p>
+        <br>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </div>
+
+{% endblock %}
