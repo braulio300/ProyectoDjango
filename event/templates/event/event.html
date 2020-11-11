@@ -11,7 +11,20 @@
 <span class="subheading">De otro Planeta</span>
 {% endblock %}
 
-{% block content%}
-<!--ACA VA EL RELLENO DE NARUTO-->
-<hr>
+{% block content %}
+	{% for event in events %}
+	      <!-- Proyecto -->
+	      <div class="row project">  	
+	      	<div class="col-lg-3 col-md-4 offset-lg-1">
+			      <img class="img-fluid" src="{{event.image.url}}" alt="">
+	      	</div>
+	        <div class="col-lg-7 col-md-8">
+	      		<h2 class="section-heading title">{{event.title}}</h2>   
+	          <p>{{event.description}}</p>
+              {% if event.link %}
+	            <p><a href="{{event.link}}">Más información</a></p>
+              {% endif %}
+              </div>
+	      </div>
+		  {% endfor %}
 {% endblock %}
