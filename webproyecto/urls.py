@@ -15,17 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path  #falta ponerle= 'include,'  antes del path y no hay otro archivo .py dentro de la carpeta app :s.
-from core import views
+from core import views as core_views
+from event import views as evento_views
 from django.contrib.auth import views as auth_views #Necesario para el Log-in
 
+from django.conf import settings
 urlpatterns = [
     path('', auth_views.LoginView.as_view(redirect_authenticated_user=True)), #Necesario para Log-in
     path('accounts/', include('django.contrib.auth.urls')), #Necesario para Log-in
-
-    path('',views.home, name="home"),
-    path('about/',views.about, name="about"),
-    path('event/',views.event, name="eventos"),
-    path('contact/',views.contact, name="contact"),
+    path('registro/', core_views.registro, name='registro'), #Registro de usuarios   
+    path('',core_views.home, name="home"),
+    path('about/',core_views.about, name="about"),
+    path('event/',evento_views.event, name="event"),
+    path('contact/',core_views.contact, name="contact"),
     path('admin/', admin.site.urls),
-    path('registro/', views.registro, name='registro'), #Registro de usuarios
+    
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

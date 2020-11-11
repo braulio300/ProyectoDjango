@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'event.apps.EventConfig', #Aplicacion para la gestion de eventos
 ]
 
 MIDDLEWARE = [
@@ -121,5 +122,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'eventos'  #Página que enviará después de estar logeado.
+LOGIN_REDIRECT_URL = 'about'  #Página que enviará después de estar logeado.
 LOGOUT_REDIRECT_URL= '' #Página para el inicio de sesión.
+
+#Media files Al guardar una imagen, esta queda en la raiz de tod el codigo, es una mala practica, por eso 
+#se define el "media file" direccion donde va a ir los archivos multimedia
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

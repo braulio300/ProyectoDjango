@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+{% extends 'core/base2.html' %}
 
 <!--TITULO-->
 {% block title %}{{ 'Login' }}{% endblock %}
@@ -15,7 +15,7 @@
 {% block content %}
   
 {% block title2 %}
-    {{ 'Autenticado de usuarios' }}
+    
 {% endblock %}
 
 	{% if form.errors %}
@@ -25,6 +25,9 @@
 	{% endif %}
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
+        <div class="row justify-content-center">
+        <h1>Iniciar Sesion</h1>
+        </div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-3">Usuario</div>
             <div class="col-12 col-sm-3">
@@ -47,7 +50,7 @@
         <br>
     </form>
 
-    <!--Carrousel-->
+  <!--Carrousel-->
   <hr>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
