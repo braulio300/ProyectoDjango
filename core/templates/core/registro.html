@@ -1,11 +1,21 @@
 {% extends 'core/base2.html' %}
-{% block title %}
-    {{ 'Registro de Usuarios' }}
+
+<!--TITULO-->
+{% block title %}{{ 'Registro de Usuarios' }}{% endblock %}
+{% block title2 %}{{ 'Registro de Usuarios' }}{% endblock %}
+
+
+<!--Fondo de Pantalla-->
+{% block background %}{% load static %}{% static 'core/img/Registro.jpg' %}{% endblock %}
+
+<!--Titulo de imagen y Subtitulos-->
+{% block headers %}
+<h1>Registro</h1>
+<span class="subheading">Se parte de Brothers</span>
 {% endblock %}
-{% block title2 %}
-    {{ 'Registro de Usuarios' }}
-{% endblock %}
-{% block content %}
+
+<!--CONTENIDO-->
+{% block content %} 
     <form action="{% url 'registro' %}" method="post">
         {% csrf_token %}
 
@@ -32,7 +42,7 @@
         <!-- Constraseña -->
         <div class="row justify-content-center">
             <div class="col-12 col-sm-3">
-                Constraseña
+                Contraseña
             </div>
             <div class="col-12 col-sm-3">
                 <input type="password" name="txtClave" class="txtClave form-control">

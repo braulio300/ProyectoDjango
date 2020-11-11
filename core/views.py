@@ -16,15 +16,14 @@ def registro(request):
     return render(request, "core/registro.html")
 
 def home(request):
-
+    if not request.user.is_authenticated:
+       return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "core/home.html")
 
 def about(request):
     return render(request, "core/about.html")
 
 def event(request):
-    if not request.user.is_authenticated:
-       return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "core/event.html")
 
 def contact(request):
