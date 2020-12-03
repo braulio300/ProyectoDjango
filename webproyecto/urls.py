@@ -28,7 +28,16 @@ urlpatterns = [
     path('about/',core_views.about, name="about"),
     path('event/',evento_views.event, name="event"),
     path('contact/',core_views.contact, name="contact"),
+
+
+    path('ajaxTest/', core_views.ajaxTest, name="ajaxTest"),
+    path('ajaxTestResponse/', core_views.ajaxTestResponse, name="ajaxTestResponse"),
+    
+    path('contactAjax/', core_views.contactAjax, name="contactAjax"),
+    path('contactAjaxResponse/', core_views.contactAjaxResponse, name="contactAjaxResponse"),
+    
     path('admin/', admin.site.urls),
+    
     
 ]
 

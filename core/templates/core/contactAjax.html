@@ -1,9 +1,9 @@
 {% extends 'core/base.html' %}
 <!--TITULO-->
 {% block title%}Contacto{% endblock %}
-
+{% load static %}
 <!--Fondo de Pantalla-->
-{% block background %}{% load static %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+{% block background %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
 
 <!--Titulo de imagen y Subtitulos-->
 {% block headers %}
@@ -12,7 +12,10 @@
 {% endblock %}
 
 {% block titulo%}
-    <h1>Contacta con un Staff</h1>
+    <script src="{% static 'core/js/contactAjax.js' %}"></script>
+    <div class="row justify-content-center">
+        <h1>Contacta con un Staff</h1>
+    </div>
 {% endblock%}
 
 <br>
@@ -26,10 +29,10 @@
             Id
         </div>
         <div class="col-8 col-sm-4">
-            <input type="txt" name="txtId" class="form-control" value="{{ item.id }}">
+            <input type="txt" name="txtId" class="form-control txtId" value="{{ item.id }}">
         </div>
         <div class="col-4 col-sm-2">
-            <input type="submit" name="btnBuscar" class="btn btn-success" value="Buscar">
+            <input type="submit" name="btnBuscar" class="btn btn-success btnBuscar" value="Buscar">
         </div>
     </div>
 
@@ -38,7 +41,7 @@
             Rut
         </div>
         <div class="col-12 col-sm-6">
-            <input type="txt" name="txtRut" class="form-control" value="{{ item.rut }}">
+            <input type="txt" name="txtRut" class="form-control txtRut" value="{{ item.rut }}">
         </div>
     </div>
 
@@ -47,7 +50,7 @@
             Nombre
         </div>
         <div class="col-12 col-sm-6">
-            <input type="text" name="txtNombre" class="form-control" value="{{ item.nombre }}">
+            <input type="text" name="txtNombre" class="form-control txtNombre" value="{{ item.nombre }}">
         </div>
     </div>
 
@@ -56,7 +59,7 @@
             Apellido
         </div>
         <div class="col-12 col-sm-6">
-            <input type="text" name="txtApellido" class="form-control" value="{{ item.apellido }}">
+            <input type="text" name="txtApellido" class="form-control txtApellido" value="{{ item.apellido }}">
         </div>
     </div>
 
@@ -65,7 +68,7 @@
             Correo
         </div>
         <div class="col-12 col-sm-6">
-            <input type="text" name="txtCorre" class="form-control" value="{{ item.corre }}">
+            <input type="text" name="txtCorre" class="form-control txtCorre" value="{{ item.corre }}">
         </div>
     </div> 
     <div class="row justify-content-center">
@@ -73,10 +76,10 @@
             Opciones
         </div>
         <div class="col-12 col-sm-6">
-            <input type="submit" name="btnGrabar" class="btn btn-success" value="Grabar">
-            <input type="submit" name="btnListar" class="btn btn-success" value="Listar">
+            <input type="submit" name="btnGrabar" class="btn btn-success btnGrabar" value="Grabar">
+            <input type="submit" name="btnListar" class="btn btn-success btnListar" value="Listar">
 {% if item.id > 0 %}
-            <input type="submit" name="btnEliminar" class="btn btn-danger float-right" value="Eliminar">
+            <input type="submit" name="btnEliminar" class="btn btn-danger float-right btnEliminar" value="Eliminar">
 {% endif %}
         </div>
     </div>

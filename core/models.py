@@ -31,3 +31,11 @@ class Produccion(models.Model):
     def __str__(self):
         return self.idProduccion
 
+class Staff(models.Model):
+    rut            = models.DecimalField(max_digits=10, decimal_places=0)
+    nombre         = models.CharField(max_length=30)
+    apellido       = models.CharField(max_length=30)
+    corre          = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nombre   
