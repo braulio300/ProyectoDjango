@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 <!--TITULO-->
-{% block title%}Inicio{% endblock %}
+{% block title%}Contacto{% endblock %}
 
 <!--Fondo de Pantalla-->
 {% block background %}{% load static %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
@@ -8,9 +8,111 @@
 <!--Titulo de imagen y Subtitulos-->
 {% block headers %}
 <h1>Contactanos</h1>
-<span class="subheading"></span>
+<span class="subheading">Para un mejor servicio</span>
 {% endblock %}
 
+{% block titulo%}
+    <h1>Contacta con un Staff</h1>
+{% endblock%}
+
+<br>
+
 {% block content%}
-<!--ACA VA EL RELLENO DE NARUTO-->
-{% endblock %}
+{{ mensaje }}
+<form action="{% url 'contact' %}" method="post">
+    {% csrf_token %}
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-2">
+            Id
+        </div>
+        <div class="col-8 col-sm-4">
+            <input type="txt" name="txtId" class="form-control" value="{{ item.id }}">
+        </div>
+        <div class="col-4 col-sm-2">
+            <input type="submit" name="btnBuscar" class="btn btn-success" value="Buscar">
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-2">
+            Rut
+        </div>
+        <div class="col-12 col-sm-6">
+            <input type="txt" name="txtRut" class="form-control" value="{{ item.rut }}">
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-2">
+            Nombre
+        </div>
+        <div class="col-12 col-sm-6">
+            <input type="text" name="txtNombre" class="form-control" value="{{ item.nombre }}">
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-2">
+            Apellido
+        </div>
+        <div class="col-12 col-sm-6">
+            <input type="text" name="txtApellido" class="form-control" value="{{ item.apellido }}">
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-2">
+            Correo
+        </div>
+        <div class="col-12 col-sm-6">
+            <input type="text" name="txtCorre" class="form-control" value="{{ item.corre }}">
+        </div>
+    </div> 
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-2">
+            Opciones
+        </div>
+        <div class="col-12 col-sm-6">
+            <input type="submit" name="btnGrabar" class="btn btn-success" value="Grabar">
+            <input type="submit" name="btnListar" class="btn btn-success" value="Listar">
+{% if item.id > 0 %}
+            <input type="submit" name="btnEliminar" class="btn btn-danger float-right" value="Eliminar">
+{% endif %}
+        </div>
+    </div>
+</form>
+{% endblock%}
+
+
+<br>
+
+{% block listado%}
+    <div class="row justify-content-center">
+        <div>
+            <div class="table-respondive">
+                <table class="table">
+                    <thead class="table-active">
+                        <th>#</th>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        
+                    </thead>
+                    <tbody>
+{% for fila in lista %}
+                        <tr>
+                            <td>{{ fila.id }}</td>
+                            <td>{{ fila.rut }}</td>
+                            <td>{{ fila.nombre }}</td>
+                            <td>{{ fila.apellido }}</td>
+                            <td>{{ fila.corre }}</td>
+                        </tr>  
+{% endfor %}
+                    </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>    
+{% endblock%}
+

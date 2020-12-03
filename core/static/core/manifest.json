@@ -1,0 +1,25 @@
+{
+  "name"              : "BROTHERS EVENT COMPANY",
+  "short_name"        : "BROTHERS",
+  "orientation"       : "portrait",
+  "display"           : "standalone",
+  "background_color"  : "#2F83DD",
+  "scope"             : "../",
+  "start_url"         : "../",
+  "lang"              : "es-CL",
+  "icons"             : [ {
+                            "src"   : "/static/core/img/about-bg.jpg",
+                            "sizes" : "60x60",
+                            "type"  : "image/jpg"
+                          },
+                          {
+                            "src"   : "/static/core/img/home-bg.jpg",
+                            "sizes" : "120x120",
+                            "type"  : "image/jpg"
+                          },
+                          {
+                            "src"   : "/static/core/img/Registro.jpg",
+                            "sizes" : "120x120",
+                            "type"  : "image/jpg"
+                          }]
+}

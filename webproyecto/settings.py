@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'event.apps.EventConfig', #Aplicacion para la gestion de eventos
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'webproyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',],  #Vigilar esto, ya que templates está dentro de otra carpeta llamada core.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,3 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'about'  #Página que enviará después de estar logeado.
+LOGOUT_REDIRECT_URL= '' #Página para el inicio de sesión.
+
+#Media files Al guardar una imagen, esta queda en la raiz de tod el codigo, es una mala practica, por eso 
+#se define el "media file" direccion donde va a ir los archivos multimedia
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
