@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'event.apps.EventConfig', #Aplicacion para la gestion de eventos
+    'event.apps.EventConfig', #Aplicacion para la gestion de eventos.
+    'social_django', #Incorporación inicio sesión Facebook con Django.
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'webproyecto.urls'
@@ -65,10 +67,17 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 WSGI_APPLICATION = 'webproyecto.wsgi.application'
 
@@ -121,6 +130,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Actualización de pestañas sobre inicio de sesión Facebook
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+SOCIAL_AUTH_FACEBOOK_KEY = '722905275295401'                #ID APP FACEBOOK GONZALO
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b94ca6c323111c91ff34f1a297aeff83' #PASS APP FACEBOOK GONZALO
+
+
 
 LOGIN_REDIRECT_URL = 'about'  #Página que enviará después de estar logeado.
 LOGOUT_REDIRECT_URL= '' #Página para el inicio de sesión.

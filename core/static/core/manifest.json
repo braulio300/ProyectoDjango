@@ -9,7 +9,7 @@
   "lang"              : "es-CL",
   "icons"             : [ {
                             "src"   : "/static/core/img/about-bg.jpg",
-                            "sizes" : "60x60",
+                            "sizes" : "1900x1501",
                             "type"  : "image/jpg"
                           },
                           {

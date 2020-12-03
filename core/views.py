@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponse
 from .models import Staff
 from django.shortcuts import redirect #Login
@@ -9,6 +10,14 @@ from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
+#Vistas del Login
+def login(request):
+    return render(request, 'login.html')
+@login_required
+def home(request):
+    return render(request, 'home.html')
+
+
 @csrf_exempt
 def contactAjaxResponse(request):
     id = int("0" + request.POST["txtId"])
@@ -19,8 +28,8 @@ def contactAjaxResponse(request):
     except:
         return JsonResponse({})
 
-    
-@csrf_exempt    
+
+@csrf_exempt
 def contactAjax(request):
     return render(request, 'core/contactAjax.html', {} )
 
@@ -55,12 +64,12 @@ def about(request):
     return render(request, "core/about.html")
 
 def contact(request):
-    mensaje = "" 
+    mensaje = ""
     lista   = {}
     item    = {}
     #Detecta si hay una solicitud
     if request.method == "POST":
-        #CAPTURA LOS VALORES ENTREGADOS 
+        #CAPTURA LOS VALORES ENTREGADOS
         id              = int("0" + request.POST["txtId"])
         rut             = int("0" + request.POST["txtRut"])
         nombre          = request.POST["txtNombre"]
@@ -69,10 +78,10 @@ def contact(request):
 
         #detecta que boton presiono el usuario
         if 'btnGrabar' in request.POST:
-            
+
             if id < 1: #nuevo registro
                 Staff.objects.create(rut = rut, nombre=nombre, apellido=apellido, corre=corre)
-                
+
             else:
                 item = Staff.objects.get(pk = id)
                 item.rut        = rut
@@ -88,7 +97,7 @@ def contact(request):
             except:
                 mensaje = "Staff no encontrado"
                 item = {}
- 
+
         elif 'btnListar' in request.POST:
             lista = Staff.objects.all()
 

@@ -22,6 +22,8 @@ from django.contrib.auth import views as auth_views #Necesario para el Log-in
 from django.conf import settings
 from django.views.generic import TemplateView
 
+from core import views
+
 urlpatterns = [
     path('', auth_views.LoginView.as_view(redirect_authenticated_user=True)), #Necesario para Log-in
     path('accounts/', include('django.contrib.auth.urls')), #Necesario para Log-in
@@ -36,7 +38,7 @@ urlpatterns = [
     path('ajaxTestResponse/', core_views.ajaxTestResponse, name="ajaxTestResponse"),
     
     path('contactAjax/', core_views.contactAjax, name="contactAjax"),
-    path('contactAjaxResponse/', core_views.contactAjaxResponse, name="contactAjaxResponse"),
+    path('contactAjaxResponse', core_views.contactAjaxResponse, name="contactAjaxResponse"),
     
     path('admin/', admin.site.urls),
 
@@ -44,6 +46,10 @@ urlpatterns = [
     path('sw.js',
          TemplateView.as_view(template_name='sw.js', content_type='application/javascript'), name='sw.js'),
 
+    path("login/", views.login, name="login"),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path('social-auth/', include('social_django.urls', namespace="social")),
+    path("", views.home, name="home"),
     
 ]
 

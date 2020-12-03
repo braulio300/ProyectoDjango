@@ -15,6 +15,13 @@
 
 <!--Contenido, todo el relleno bomnito-->
 {% block content %}
+    <!--Logged in Facebook-->
+    <div class="row">
+        <div class="col-sm-12 mb-3">
+            <h4 class="text-center"> Bienvenido! {{ user.username }}</h4>
+        </div>
+    </div>
+
   <!--Carrousel-->
   <hr>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
