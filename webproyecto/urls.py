@@ -20,6 +20,8 @@ from event import views as evento_views
 from django.contrib.auth import views as auth_views #Necesario para el Log-in
 
 from django.conf import settings
+from django.views.generic import TemplateView
+
 urlpatterns = [
     path('', auth_views.LoginView.as_view(redirect_authenticated_user=True)), #Necesario para Log-in
     path('accounts/', include('django.contrib.auth.urls')), #Necesario para Log-in
@@ -37,7 +39,11 @@ urlpatterns = [
     path('contactAjaxResponse/', core_views.contactAjaxResponse, name="contactAjaxResponse"),
     
     path('admin/', admin.site.urls),
-    
+
+    # Ruta para ServiceWorker.js 'sw.js'.
+    path('sw.js',
+         TemplateView.as_view(template_name='sw.js', content_type='application/javascript'), name='sw.js'),
+
     
 ]
 

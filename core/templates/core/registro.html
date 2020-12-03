@@ -15,9 +15,15 @@
 {% endblock %}
 
 <!--CONTENIDO-->
-{% block content %} 
+{% block content %}
+    {% if form.errors %}
+        <div class="row justify-content-center">
+		    <p>Intente nuevamente</p>
+        </div>
+	{% endif %}
     <form action="{% url 'registro' %}" method="post">
         {% csrf_token %}
+
 
         <!-- Nombre -->
         <div class="row justify-content-center">
